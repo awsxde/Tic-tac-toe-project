@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font-size: larger;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.btn1 {
+  grid-area: 4 / 4 / 5 / 5;
+}
+.btn2 {
+  grid-area: 4 / 5 / 5 / 6;
+}
+.btn3 {
+  grid-area: 4 / 6 / 5 / 7;
+}
+.btn4 {
+  grid-area: 5 / 4 / 6 / 5;
+}
+.btn5 {
+  grid-area: 5 / 5 / 6 / 6;
+}
+.btn6 {
+  grid-area: 5 / 6 / 6 / 7;
+}
+.btn7 {
+  grid-area: 6 / 4 / 7 / 5;
+}
+.btn8 {
+  grid-area: 6 / 5 / 7 / 6;
+}
+.btn9 {
+  grid-area: 6 / 6 / 7 / 7;
+}
+p {
+  grid-area: 2 / 5 / 3 / 6;
+  font-size: x-large;
+}
