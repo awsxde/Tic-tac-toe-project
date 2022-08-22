@@ -4,22 +4,18 @@ let btn = document.querySelectorAll(".btn");
 let arr = Array.from({ length: btn.length }, (_, i) => (i = "empty"));
 let clicked = Array.from({ length: btn.length }, (_, i) => (i = false));
 
+function assign(j, z) {
+  btn[j].innerHTML = `${z}`;
+  turn = !turn;
+  clicked[j] = true;
+  arr[j] = btn[j].innerHTML;
+}
+
 for (let i = 0; i < btn.length; i++) {
   btn[i].addEventListener("click", function () {
-    if (!clicked[i]) {
-      if (turn) {
-        btn[i].innerHTML = "X";
-        turn = false;
-      } else {
-        btn[i].innerHTML = "O";
-        turn = true;
-      }
-      clicked[i] = true;
-      arr[i] = btn[i].innerHTML;
-      console.log(arr);
-    }
+    clicked[i] && count--;
+    !clicked[i] && assign(i, turn ? "X" : "O");
     check();
-    count++;
   });
 }
 
@@ -44,13 +40,23 @@ function logic(a, b, c, array) {
 }
 
 function check() {
-  if (logic(0, 1, 2, arr)) win(`${arr[0]}`);
-  else if (logic(3, 4, 5, arr)) win(`${arr[3]}`);
-  else if (logic(6, 7, 8, arr)) win(`${arr[6]}`);
-  else if (logic(0, 3, 6, arr)) win(`${arr[0]}`);
-  else if (logic(1, 4, 7, arr)) win(`${arr[1]}`);
-  else if (logic(2, 5, 8, arr)) win(`${arr[2]}`);
-  else if (logic(0, 4, 8, arr)) win(`${arr[0]}`);
-  else if (logic(2, 4, 6, arr)) win(`${arr[2]}`);
-  else if (count === 8) tie();
+  logic(0, 1, 2, arr)
+    ? win(`${arr[0]}`)
+    : logic(3, 4, 5, arr)
+    ? win(`${arr[3]}`)
+    : logic(6, 7, 8, arr)
+    ? win(`${arr[6]}`)
+    : logic(0, 3, 6, arr)
+    ? win(`${arr[0]}`)
+    : logic(1, 4, 7, arr)
+    ? win(`${arr[1]}`)
+    : logic(2, 5, 8, arr)
+    ? win(`${arr[2]}`)
+    : logic(0, 4, 8, arr)
+    ? win(`${arr[0]}`)
+    : logic(2, 4, 6, arr)
+    ? win(`${arr[2]}`)
+    : count === 8
+    ? tie()
+    : count++;
 }
