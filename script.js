@@ -22,18 +22,18 @@ btn.forEach((i) =>
 );
 
 function check() {
-  isOver()
-    ? end("tie")
-    : [
-        winCheck(0, 1, 2),
-        winCheck(3, 4, 5),
-        winCheck(6, 7, 8),
-        winCheck(0, 3, 6),
-        winCheck(1, 4, 7),
-        winCheck(2, 5, 8),
-        winCheck(0, 4, 8),
-        winCheck(2, 4, 6),
-      ].some((i) => i === true) && end("win");
+  [
+    winCheck(0, 1, 2),
+    winCheck(3, 4, 5),
+    winCheck(6, 7, 8),
+    winCheck(0, 3, 6),
+    winCheck(1, 4, 7),
+    winCheck(2, 5, 8),
+    winCheck(0, 4, 8),
+    winCheck(2, 4, 6),
+  ].some((i) => i === true)
+    ? end("win")
+    : isOver() && end("tie");
 }
 
 function isOver() {
